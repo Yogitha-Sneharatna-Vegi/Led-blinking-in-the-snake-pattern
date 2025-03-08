@@ -1,0 +1,35 @@
+
+ int redPin = 2;
+ int bluePin = 3;
+ int greenPin = 4;
+void setup() {
+
+  pinMode(redPin, OUTPUT);
+  pinMode(bluePin, OUTPUT);
+  pinMode(greenPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+ 
+  if (Serial.available() > 0) {
+     char buttonState = Serial.read(); 
+    
+   
+    digitalWrite(redPin, LOW);
+    digitalWrite(bluePin, LOW);
+    digitalWrite(greenPin, LOW);
+    
+   
+    if (buttonState == 'r') {
+      digitalWrite(redPin, HIGH);
+      Serial.println("Red LED is ON");
+    } else if (buttonState == 'b') {
+      digitalWrite(bluePin, HIGH);
+      Serial.println("Blue LED is ON");
+    } else if (buttonState == 'g') {
+      digitalWrite(greenPin, HIGH);
+      Serial.println("Green LED is ON");
+    }
+  }
+}
